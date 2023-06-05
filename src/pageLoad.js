@@ -1,9 +1,13 @@
 function header() {
   const headerContainer = document.createElement("header")
   const title = document.createElement("h1")
-  title.textContent = "TO-DO"
+  title.textContent = "// TO-DO"
+
+  const taskIcon = document.createElement("i")
+  taskIcon.setAttribute("class", "fa-solid fa-list-check")
 
   headerContainer.appendChild(title)
+  headerContainer.appendChild(taskIcon)
 
   return headerContainer
 }
@@ -14,13 +18,20 @@ function navBar() {
   const today = document.createElement("h2")
   const week = document.createElement("h2")
   const project = document.createElement("h2")
+  const circleAroundLogo = document.createElement("div")
+  const addLogo = document.createElement("i")
 
-  all.textContent = "All Tasks"
-  today.textContent = "Todays Tasks"
-  week.textContent = "Weeks Tasks"
-  project.textContent = "Working Project"
+  circleAroundLogo.setAttribute("class", "add-container")
+  addLogo.setAttribute("class", "fa-solid fa-plus")
 
-  const navEl = [all, today, week, project]
+  circleAroundLogo.appendChild(addLogo)
+
+  all.textContent = " - All Tasks"
+  today.textContent = " - Todays Tasks"
+  week.textContent = " - Weeks Tasks"
+  project.textContent = " - Projects"
+
+  const navEl = [all, today, week, project, circleAroundLogo]
 
   navEl.forEach((el) => navContainer.appendChild(el))
 
@@ -29,6 +40,10 @@ function navBar() {
 
 function main() {
   const mainContainer = document.createElement("main")
+
+  const addtask = document.createElement("div")
+
+  mainContainer.appendChild(addtask)
 
   return mainContainer
 }
