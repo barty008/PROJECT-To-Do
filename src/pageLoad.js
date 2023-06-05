@@ -44,6 +44,7 @@ function main() {
   const addtask = document.createElement("div")
 
   mainContainer.appendChild(addtask)
+  mainContainer.setAttribute("class", "main-container")
 
   return mainContainer
 }
