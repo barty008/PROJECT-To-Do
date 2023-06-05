@@ -1,0 +1,11 @@
+npx webpack --watch
+
+1. create a new branch
+
+2. test code is working
+
+3. create a form structure with bootstrap to enable user input
+
+4. mind map the project
+
+
