@@ -49,12 +49,21 @@ function main() {
   return mainContainer
 }
 
+function openModal() {
+  const addTaskBtn = document.querySelector(".add-container")
+  const modalContainer = document.querySelector(".modal-container")
+  addTaskBtn.addEventListener("click", () => {
+    modalContainer.classList.add = "display-flex"
+  })
+}
+
 function pageLoad() {
   const content = document.getElementById("content")
 
   const element = [header(), navBar(), main()]
 
   element.forEach((el) => content.appendChild(el))
+  openModal()
 }
 
 export default pageLoad
