@@ -52,10 +52,22 @@ function main() {
 function openModal() {
   const addTaskBtn = document.querySelector(".add-container")
   const modalContainer = document.querySelector(".modal-container")
-  addTaskBtn.addEventListener("click", () => {
-    modalContainer.classList.add = "display-flex"
+  addTaskBtn.addEventListener("click", (e) => {
+    modalContainer.style.display = "flex"
   })
 }
+
+//
+function close() {
+  const modalContainer = document.querySelector(".modal-container")
+  modalContainer.style.display = "none"
+}
+function escapeClose(event) {
+  if (event.keyCode === 27) {
+    close()
+  }
+}
+document.body.addEventListener("keydown", escapeClose)
 
 function pageLoad() {
   const content = document.getElementById("content")
