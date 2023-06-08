@@ -15,9 +15,9 @@ function header() {
 function navBar() {
   const navContainer = document.createElement("nav")
   const all = document.createElement("h2")
-  const today = document.createElement("h2")
-  const week = document.createElement("h2")
-  const project = document.createElement("h2")
+  // const today = document.createElement("h2")
+  // const week = document.createElement("h2")
+  // const project = document.createElement("h2")
   const circleAroundLogo = document.createElement("div")
   const addLogo = document.createElement("i")
 
@@ -26,28 +26,49 @@ function navBar() {
 
   circleAroundLogo.appendChild(addLogo)
 
-  all.textContent = " - All Tasks"
-  today.textContent = " - Todays Tasks"
-  week.textContent = " - Weeks Tasks"
-  project.textContent = " - Projects"
+  // card 1
+  const cardOneNav = document.createElement("div")
+  cardOneNav.innerHTML = `
+  <div class="card card-one-container">
+  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All tasks</a>
+  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Today</a>
+  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Week</a>
+  </div>
+  `
 
-  const navEl = [all, today, week, project, circleAroundLogo]
+  // card 2
+  const cardTwoNav = document.createElement("div")
+  cardTwoNav.innerHTML = `
+  <div class="card card-one-container ">
+  <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Working projects:</a>
+
+  </div>
+  `
+
+  // all.textContent = " - All Tasks"
+  // today.textContent = " - Todays Tasks"
+  // week.textContent = " - Weeks Tasks"
+  // project.textContent = " - Projects"
+
+  const navEl = [cardOneNav, cardTwoNav, circleAroundLogo]
 
   navEl.forEach((el) => navContainer.appendChild(el))
 
   return navContainer
 }
 
-function main() {
-  const mainContainer = document.createElement("main")
+// function main() {
+//   const mainContainer = document.createElement("main")
 
-  const addtask = document.createElement("div")
+//   const addtask = document.createElement("div")
 
-  mainContainer.appendChild(addtask)
-  mainContainer.setAttribute("class", "main-container")
+//   mainContainer.appendChild(addtask)
+//   mainContainer.setAttribute("class", "main-container")
 
-  return mainContainer
-}
+//   return mainContainer
+// }
 
 function openModal() {
   const addTaskBtn = document.querySelector(".add-container")
@@ -72,10 +93,11 @@ document.body.addEventListener("keydown", escapeClose)
 function pageLoad() {
   const content = document.getElementById("content")
 
-  const element = [header(), navBar(), main()]
+  const element = [header(), navBar()]
 
   element.forEach((el) => content.appendChild(el))
   openModal()
 }
 
+// export close
 export default pageLoad
