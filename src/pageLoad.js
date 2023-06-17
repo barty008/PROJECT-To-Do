@@ -31,7 +31,7 @@ function navBar() {
   cardOneNav.innerHTML = `
   <div class="card card-one-container">
   <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All tasks</a>
+  <a class="nav-link bg-secondary" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All tasks</a>
   <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Today</a>
   <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Week</a>
   </div>
@@ -42,7 +42,19 @@ function navBar() {
   cardTwoNav.innerHTML = `
   <div class="card card-one-container ">
   <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Working projects:</a>
+  <a class="nav-link bg-secondary" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Working projects:</a>
+
+  </div>
+  <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <a class="nav-link bg-danger" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">High priority:</a>
+
+  </div>
+  <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <a class="nav-link bg-warning" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Medium priority:</a>
+
+  </div>
+  <div class="nav  flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <a class="nav-link bg-success " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Low priority:</a>
 
   </div>
   `
