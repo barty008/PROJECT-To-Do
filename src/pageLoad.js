@@ -70,17 +70,32 @@ function navBar() {
 
   return navContainer
 }
+// --------------main----------------
+function main() {
+  const mainContainer = document.createElement("main")
+  mainContainer.setAttribute("class", "main-container")
+  // table content
+  // table
+  const table = document.createElement("table")
+  table.setAttribute("class", "table")
+  // thead
+  const tableHead = document.createElement("thead")
+  tableHead.innerHTML = `
+  
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Task Title</th>      
+      <th scope="col">Priority</th>
+      <th scope="col">Date Due</th>
+    </tr>
+  </thead>
+  `
+  table.appendChild(tableHead)
+  mainContainer.appendChild(table)
 
-// function main() {
-//   const mainContainer = document.createElement("main")
-
-//   const addtask = document.createElement("div")
-
-//   mainContainer.appendChild(addtask)
-//   mainContainer.setAttribute("class", "main-container")
-
-//   return mainContainer
-// }
+  return mainContainer
+}
 
 function openModal() {
   const addTaskBtn = document.querySelector(".add-container")
@@ -105,7 +120,7 @@ document.body.addEventListener("keydown", escapeClose)
 function pageLoad() {
   const content = document.getElementById("content")
 
-  const element = [header(), navBar()]
+  const element = [header(), navBar(), main()]
 
   element.forEach((el) => content.appendChild(el))
   openModal()

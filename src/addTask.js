@@ -1,23 +1,22 @@
 import close from "./pageLoad"
 
-const content = document.querySelector("#content")
 const submitButton = document.querySelector(".btn-secondary")
-const main = document.createElement("main")
-let taskEl = document.createElement("div")
 
 // form input
 
 // --------------array----------------
 const toDoArray = []
 // --------------toDo----------------
-function ToDo(title, note, priority) {
-  ;(this.title = title), (this.note = note), (this.priority = priority)
+function ToDo(title, priority, date) {
+  ;(this.title = title), (this.priority = priority), (this.date = date)
 }
 
 // --------------selecting priority status ----------------
+
 const addPriorityStatus = document.querySelector(".add-To-item")
 const priorityBtns = document.querySelectorAll('input[name="options-outlined"]')
 let selectedBtn
+// selecting priority
 addPriorityStatus.addEventListener("click", () => {
   for (const priorityBtn of priorityBtns) {
     if (priorityBtn.checked) {
@@ -27,58 +26,51 @@ addPriorityStatus.addEventListener("click", () => {
     }
   }
 })
+// --------------selecting date ----------------
+
+const getDate = document.querySelector(".date-input")
+
 // --------------add item to list----------------
+
 function addToDo() {
+  const taskDate = getDate.value
+  let date = new Date(taskDate)
   const taskTitle = document.getElementById("task-input").value
-  const taskNote = document.getElementById("task-note").value
-
-  //
-
-  const todoItem = new ToDo(taskTitle, taskNote, selectedBtn)
+  const todoItem = new ToDo(
+    taskTitle,
+    selectedBtn,
+    date.toLocaleDateString("en-GB")
+  )
   toDoArray.push(todoItem)
 }
-// --------------ui----------------
-// ----------------
-// function taskAdd() {
-//   let taskValue = {
-//   }
 
-//  pushing value to the DOM ---------------------------------------
+// --------------------ui--------------------------
 
-//   content.appendChild(main)
+function toDoUI() {
+  const mainTable = document.querySelector(".table")
+  let tableBody = document.createElement("tbody")
 
-//   taskEl.innerHTML = `<table class="table">
-//   <thead>
-//     <tr>
-//       <th scope="col">#</th>
-//       <th scope="col">Task Title</th>
-//       <th scope="col">Task note</th>
-//       <th scope="col">Priority</th>
-//       <th scope="col">Date Due</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr>
-//       <th scope="row">1</th>
-//       <td>${taskValue.taskTitle}</td>
-//       <td>${taskValue.taskNote}</td>
-//       <td>Priortity</td>
-//     </tr>
-//     <tr>
+  for (let i = 0; i < toDoArray.length; i++) {
+    let task = toDoArray[i]
+    tableBody.innerHTML = `   
+          <tr>
+          <th scope="row">${i + 1}</th>
+          <td>${task.title}</td>          
+          <td>${task.priority}</td>          
+          <td>${task.date}</td>          
+        </tr>     
+    `
+    mainTable.appendChild(tableBody)
+  }
+}
 
-// </table>
-
-//   `
-//   main.appendChild(taskEl)
-//   return main
-// }
 submitButton.addEventListener("click", (e) => {
-  e.preventDefault()
-
   const modalContainer = document.querySelector(".modal-container")
   modalContainer.style.display = "none"
+  e.preventDefault()
   addToDo()
+  toDoUI()
   console.table(toDoArray)
 })
 
-// export default taskAdd
+export default toDoUI

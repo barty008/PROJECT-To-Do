@@ -90,15 +90,27 @@ nav h2 {
 }
 // ------------------------------main ------------------------------------------
 main {
-  margin-right: 10%;
-  background-color: white;
+  border: 10px black solid;
+  margin: 4% 10% 4% 0;
+
+  gap: 10px;
   grid-column: 2/4;
   grid-row: 2/5;
 }
 
-.table {
-  // border: 1px solid black;
+// ------------------------------todo table ------------------------------------------
+th {
+  width: 10px;
+  border: 1px solid black;
+  text-align: center;
 }
+
+td {
+  border: 1px solid black;
+  width: 10px;
+  text-align: center;
+}
+
 // ------------------------------modal ------------------------------------------
 .modal-container {
   display: none;
