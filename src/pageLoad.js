@@ -1,3 +1,5 @@
+import { set } from "lodash"
+
 function header() {
   const headerContainer = document.createElement("header")
   const title = document.createElement("h1")
@@ -34,11 +36,13 @@ function navBar() {
   <a class="nav-link bg-secondary" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All tasks</a>
   <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Today</a>
   <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Week</a>
+  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Completed tasks</a>
   </div>
   `
 
   // card 2
   const cardTwoNav = document.createElement("div")
+
   cardTwoNav.innerHTML = `
   <div class="card card-one-container ">
   <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -54,15 +58,9 @@ function navBar() {
 
   </div>
   <div class="nav  flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link bg-success " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Low priority:</a>
-
+  <a class="nav-link bg-success low-priority" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Low priority:</a>
   </div>
   `
-
-  // all.textContent = " - All Tasks"
-  // today.textContent = " - Todays Tasks"
-  // week.textContent = " - Weeks Tasks"
-  // project.textContent = " - Projects"
 
   const navEl = [cardOneNav, cardTwoNav, circleAroundLogo]
 
@@ -88,6 +86,7 @@ function main() {
       <th scope="col">Task Title</th>      
       <th scope="col">Priority</th>
       <th scope="col">Date Due</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   `

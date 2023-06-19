@@ -6,9 +6,21 @@ const submitButton = document.querySelector(".btn-secondary")
 
 // --------------array----------------
 const toDoArray = []
+const lowPriority = []
+const mediumPriority = []
+const highPriority = []
+
 // --------------toDo----------------
-function ToDo(title, priority, date) {
-  ;(this.title = title), (this.priority = priority), (this.date = date)
+function ToDo(title, priority, date, status) {
+  this.title = title
+  this.priority = priority
+  this.date = date
+  this.status = status
+}
+
+ToDo.prototype.removeTask = function (index) {
+  toDoArray.splice(index, 1)
+  toDoUI()
 }
 
 // --------------selecting priority status ----------------
@@ -22,6 +34,7 @@ addPriorityStatus.addEventListener("click", () => {
     if (priorityBtn.checked) {
       selectedBtn = priorityBtn.value
       console.log(selectedBtn)
+
       break
     }
   }
@@ -33,14 +46,43 @@ const getDate = document.querySelector(".date-input")
 // --------------add item to list----------------
 
 function addToDo() {
+  // --------------delete button----------------
+  let deleteBtn = document.createElement("p")
+  deleteBtn.textContent = "delete"
+  // --------------read status----------------
+
   const taskDate = getDate.value
   let date = new Date(taskDate)
   const taskTitle = document.getElementById("task-input").value
+
+  const taskStatus = document.createElement("input")
+  taskStatus.setAttribute("type", "checkbox")
+  taskStatus.setAttribute("name", "Completed")
+  console.log(taskStatus)
+  //
+
+  // -----------------------------------------NEW TASK----------------------------------------
   const todoItem = new ToDo(
     taskTitle,
     selectedBtn,
-    date.toLocaleDateString("en-GB")
+    date.toLocaleDateString("en-GB"),
+    taskStatus
   )
+  if (selectedBtn === "low") {
+    const lowPriorityObject = new ToDo(
+      taskTitle,
+      selectedBtn,
+      date.toLocaleDateString("en-GB"),
+      taskStatus
+    )
+
+    lowPriority.push(lowPriorityObject)
+  } else if (selectedBtn === "medium") {
+    mediumPriority.push(todoItem)
+  } else if (selectedBtn === "high") {
+    highPriority.push(todoItem)
+  }
+  console.log(lowPriority)
   toDoArray.push(todoItem)
 }
 
@@ -57,9 +99,12 @@ function toDoUI() {
           <th scope="row">${i + 1}</th>
           <td>${task.title}</td>          
           <td>${task.priority}</td>          
-          <td>${task.date}</td>          
-        </tr>     
+          <td>${task.date}</td>                      
+          <td>${task.status.outerHTML}</td>                      
+                          
+          </tr>     
     `
+
     mainTable.appendChild(tableBody)
   }
 }
@@ -70,7 +115,28 @@ submitButton.addEventListener("click", (e) => {
   e.preventDefault()
   addToDo()
   toDoUI()
-  console.table(toDoArray)
 })
+
+// -----------------------priority buttons--------------------
+
+// -----------------------priority buttons--------------------
+// -------------------- filter object in priority --------------------------
+function lowUI() {
+  const mainTable = document.querySelector(".table")
+  let tableBody = document.createElement("tbody")
+
+  for (let i = 0; i < lowPriority.length; i++) {
+    let task = lowPriority[i]
+    tableBody.innerHTML = `   
+          <tr>
+          <th scope="row">${i + 1}</th>
+          <td>${task.title}</td>          
+          <td>${task.priority}</td>          
+          <td>${task.date}</td>          
+          </tr>     
+    `
+    mainTable.appendChild(tableBody)
+  }
+}
 
 export default toDoUI
